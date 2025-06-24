@@ -1,8 +1,9 @@
 const { Telegraf, Markup } = require('telegraf');
-const config = require('./config.json'); 
+const config = require('./config.json'); // Make sure this contains BOT_TOKEN and CHANNEL_ID
 
 const bot = new Telegraf(config.BOT_TOKEN);
 
+// Multilingual captions
 const messages = {
   en: `Welcome to EdenVault – Your Personal Digital Agent
 
@@ -21,6 +22,7 @@ We offer:
 No bots. No hassle. Just real support, real service.
 
 EdenVault – Your digital life, delivered.`,
+
   my: `EdenVault – သင့်ပုဂ္ဂလိက ဒစ်ဂျစ်တယ်အကူအညီ
 
 VPNs, subscription, gift cards, game top-ups, accounts, social media growth စတာတွေကို စျေးအရမ်းတန်ဆုံးနဲ့ ရှာနေတာလား?
@@ -38,6 +40,7 @@ EdenVault က သင့်ဒစ်ဂျစ်တယ်လိုအပ်ချ
 Bot မရှိ။ တကယ်ဝန်ဆောင်မှုရှိပါတယ်။
 
 EdenVault – သင့်ဒစ်ဂျစ်တယ်ဘဝကို ပေးဆောင်ပါတယ်။`,
+
   zh: `欢迎来到 EdenVault – 您的私人数字助手
 
 想要寻找最优惠的 VPN、订阅、礼品卡、游戏充值、账号或社交媒体增长服务？
@@ -57,83 +60,62 @@ EdenVault 是您的一站式数字服务助手 – 快速、安全、可靠。
 EdenVault – 您的数字生活，已送达。`
 };
 
-const getButtons = (lang) => Markup.inlineKeyboard([
-  [
-    Markup.button.url("🔒 VPN", "https://t.me/Edenvpn"),
-    Markup.button.url("🧾 Subscription", "https://t.me/EdenSubs")
-  ],
-  [
-    Markup.button.url("🎁 Gift Cards", "https://t.me/EdenGiftCard"),
-    Markup.button.url("🎮 Game Topup", "https://t.me/EdenGTopup")
-  ],
-  [
-    Markup.button.url("🚀 Social Media Boost", "https://t.me/EdenSMB"),
-    Markup.button.url("👤 Accounts", "https://t.me/EDENAccount")
-  ],
-  [
-    Markup.button.callback("🌐 Language / 语言 / ဘာသာ", "lang_menu")
-  ]
-]);
+// Inline buttons
+const getButtons = () =>
+  Markup.inlineKeyboard([
+    [
+      Markup.button.callback("🇬🇧 English", "lang_en"),
+      Markup.button.callback("🇨🇳 中文", "lang_zh"),
+      Markup.button.callback("🇲🇲 မြန်မာ", "lang_my")
+    ]
+  ]);
 
-const postedMessages = {};
-
-bot.start(async (ctx) => {
+// Post to channel
+bot.start(async () => {
   try {
-    const msg = await bot.telegram.sendPhoto(config.CHANNEL_ID, "https://i.imgur.com/iQxLLCB.png", {
+    const msg = await bot.telegram.sendPhoto(config.CHANNEL_ID, {
+      photo: "https://i.imgur.com/iQxLLCB.png"
+    }, {
       caption: messages.en,
       parse_mode: "Markdown",
-      reply_markup: getButtons("en").reply_markup
+      reply_markup: getButtons().reply_markup
     });
 
-    postedMessages[msg.message_id] = 'en';
-    console.log("✅ Post sent to channel!");
+    console.log("✅ Posted to channel successfully:", msg.message_id);
   } catch (err) {
-    console.error("❌ Failed to send post:", err.message);
+    console.error("❌ Failed to post to channel:", err.message);
   }
 });
 
-bot.action("lang_menu", async (ctx) => {
-  try {
-    await ctx.editMessageReplyMarkup(Markup.inlineKeyboard([
-      [
-        Markup.button.callback("🇬🇧 English", "lang_en"),
-        Markup.button.callback("🇨🇳 中文", "lang_zh"),
-        Markup.button.callback("🇲🇲 မြန်မာ", "lang_my")
-      ]
-    ]));
-  } catch (err) {
-    console.error("❌ Failed to show language menu:", err.message);
-    await ctx.answerCbQuery("❌ Error displaying language menu");
-  }
-});
-
+// Language change action
 bot.action(/lang_(.+)/, async (ctx) => {
   const lang = ctx.match[1];
-  const newText = messages[lang];
-  const message = ctx.callbackQuery.message;
+  const newCaption = messages[lang];
+  const msg = ctx.callbackQuery.message;
 
   try {
     await ctx.telegram.editMessageMedia(
-      message.chat.id,
-      message.message_id,
+      msg.chat.id,
+      msg.message_id,
       undefined,
       {
         type: "photo",
         media: "https://i.imgur.com/iQxLLCB.png",
-        caption: newText,
+        caption: newCaption,
         parse_mode: "Markdown"
       },
       {
-        reply_markup: getButtons(lang).reply_markup
+        reply_markup: getButtons().reply_markup
       }
     );
-    await ctx.answerCbQuery("✅ Language changed!");
-    console.log(`✅ Language changed to ${lang}`);
-  } catch (e) {
-    console.error("❌ Failed to edit message:", e.message);
-    await ctx.answerCbQuery("❌ Failed to change language.");
+    await ctx.answerCbQuery(`✅ Language changed`);
+    console.log(`✅ Language switched to ${lang}`);
+  } catch (err) {
+    console.error("❌ Error changing language:", err.message);
+    await ctx.answerCbQuery("❌ Could not change language");
   }
 });
 
+// Launch bot
 bot.launch();
-console.log("✅ EdenVault welcome bot is live with multilingual post!");
+console.log("✅ EdenVault multilingual welcome bot is running.");
