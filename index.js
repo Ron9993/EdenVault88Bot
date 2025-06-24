@@ -95,9 +95,7 @@ const getButtons = (showLangRow = false) => {
 // Step 1: Send post to channel
 bot.start(async () => {
   try {
-    await bot.telegram.sendPhoto(config.CHANNEL_ID, {
-      photo: "https://i.imgur.com/iQxLLCB.png"
-    }, {
+    await bot.telegram.sendPhoto(config.CHANNEL_ID, "https://i.imgur.com/iQxLLCB.png", {
       caption: messages.en,
       parse_mode: "Markdown",
       reply_markup: getButtons(false).reply_markup
