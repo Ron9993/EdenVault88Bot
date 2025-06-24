@@ -79,9 +79,7 @@ const postedMessages = {};
 
 bot.start(async (ctx) => {
   try {
-    const msg = await bot.telegram.sendPhoto(config.CHANNEL_ID, {
-      photo: "https://i.imgur.com/iQxLLCB.png"
-    }, {
+    const msg = await bot.telegram.sendPhoto(config.CHANNEL_ID, "https://i.imgur.com/iQxLLCB.png", {
       caption: messages.en,
       parse_mode: "Markdown",
       reply_markup: getButtons("en").reply_markup
