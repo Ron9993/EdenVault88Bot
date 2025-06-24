@@ -73,13 +73,15 @@ const getButtons = () =>
 // Post to channel
 bot.start(async () => {
   try {
-    const msg = await bot.telegram.sendPhoto(config.CHANNEL_ID, {
-      photo: "https://i.imgur.com/iQxLLCB.png"
-    }, {
-      caption: messages.en,
-      parse_mode: "Markdown",
-      reply_markup: getButtons().reply_markup
-    });
+    const msg = await bot.telegram.sendPhoto(
+      config.CHANNEL_ID,
+      "https://i.imgur.com/iQxLLCB.png",
+      {
+        caption: messages.en,
+        parse_mode: "Markdown",
+        reply_markup: getButtons().reply_markup
+      }
+    );
 
     console.log("✅ Posted to channel successfully:", msg.message_id);
   } catch (err) {
