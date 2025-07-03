@@ -23,23 +23,23 @@ No bots. No hassle. Just real support, real service.
 
 EdenVault – Your digital life, delivered.`,
 
-  my: `EdenVault – သင့်ပုဂ္ဂလိက ဒစ်ဂျစ်တယ်အကူအညီ
+  my: `EdenVault – သင့်အတွက် ယုံကြည်စိတ်ချရသော ဒစ်ဂျစ်တယ်ဝန်ဆောင်မှုပံ့ပိုးသူ
 
-VPNs, subscription, gift cards, game top-ups, accounts, social media growth စတာတွေကို စျေးအရမ်းတန်ဆုံးနဲ့ ရှာနေတာလား?
+VPN၊ subscription၊ gift card၊ game top-up၊ account နှင့် SMM panel ဝန်ဆောင်မှုများကို ယှဉ်ပြိုင်နိုင်သောစျေးနှုန်းဖြင့် ရှာဖွေနေပါသလား?
 
-EdenVault က သင့်ဒစ်ဂျစ်တယ်လိုအပ်ချက်အားလုံးအတွက် ယုံကြည်စိတ်ချရတဲ့ ကူညီသူ ဖြစ်ပါတယ်။
+EdenVault သည် သင့်ဒစ်ဂျစ်တယ်လိုအပ်ချက်များအတွက် ယုံကြည်စိတ်ချရပြီး ကျွမ်းကျင်သော ဝန်ဆောင်မှုပံ့ပိုးသူဖြစ်ပါသည်။
 
-ကျွန်ုပ်တို့ပေးသည့်ဝန်ဆောင်မှုများ:
-- 🔒 VPN ဝန်ဆောင်မှု – လုံခြုံရေးအထူး
-- 🧾 Subscription – Netflix, Spotify, YouTube, ChatGPT & more
-- 🎮 Game Top-Ups – မြန်မြန်ဆန်ဆန်၊ ယုံကြည်စိတ်ချ
-- 🎁 Gift Cards – ပြည်တွင်း၊ ပြည်ပရွေးချယ်စရာများ
-- 👤 Accounts – Email, Social Media, Digital Platforms
-- 🚀 Social Media Boost – အမှန်တကယ်အကျိုးအမြတ်
+ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ:
 
-Bot မရှိ။ တကယ်ဝန်ဆောင်မှုရှိပါတယ်။
+🔒 VPN ဝန်ဆောင်မှု – အဆင့်မြင့်လုံခြုံရေးအာမခံ
+🧾 Subscription ဝန်ဆောင်မှုများ – Netflix, Spotify, YouTube, ChatGPT နှင့် အခြားများ
+🎮 Game Top-Up ဝန်ဆောင်မှု – လျင်မြန်ပြီး ယုံကြည်စိတ်ချရသော
+🎁 Gift Card များ – ပြည်တွင်းနှင့်ပြည်ပ ရွေးချယ်စရာများစွာ
+👤 Account ဝန်ဆောင်မှုများ – Email, Social Media, Digital Platform များ
+🚀 SMM Panel – Social Media Marketing အတွက် ပြီးပြည့်စုံသောဝန်ဆောင်မှု
+အလိုအလျောက်စနစ်မဟုတ်ပါ။ ကျွမ်းကျင်သောဝန်ထမ်းများမှ တိုက်ရိုက်ဝန်ဆောင်မှုပေးပါသည်။
 
-EdenVault – သင့်ဒစ်ဂျစ်တယ်ဘဝကို ပေးဆောင်ပါတယ်။`,
+EdenVault – သင့်ဒစ်ဂျစ်တယ်အတွေ့အကြုံကို မြှင့်တင်ပေးပါသည်။`,
 
   zh: `欢迎来到 EdenVault – 您的私人数字助手
 
