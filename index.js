@@ -91,8 +91,23 @@ const getButtons = (showLangRow = false) => {
   return Markup.inlineKeyboard(buttons);
 };
 
-// Step 1: Send post to channel
-bot.start(async () => {
+// Command: /start - Test the bot
+bot.start(async (ctx) => {
+  try {
+    await ctx.replyWithPhoto("https://i.imgur.com/iQxLLCB.png", {
+      caption: "🤖 **EdenVault Bot Test**\n\nBot is working! Use /post to send a message to the channel.",
+      parse_mode: "Markdown",
+      reply_markup: getButtons(false).reply_markup
+    });
+    console.log("✅ /start command used");
+  } catch (err) {
+    console.error("❌ Error in /start:", err.message);
+    await ctx.reply("❌ Error testing bot.");
+  }
+});
+
+// Command: /post - Send post to channel
+bot.command('post', async (ctx) => {
   try {
     await bot.telegram.sendPhoto(config.CHANNEL_ID, "https://i.imgur.com/iQxLLCB.png", {
       caption: messages.en,
@@ -100,9 +115,11 @@ bot.start(async () => {
       reply_markup: getButtons(false).reply_markup
     });
 
-    console.log("✅ Channel post sent.");
+    await ctx.reply("✅ Posted to NOVORAHoldings channel!");
+    console.log("✅ Channel post sent via /post command");
   } catch (err) {
     console.error("❌ Error posting:", err.message);
+    await ctx.reply("❌ Failed to post to channel.");
   }
 });
 
